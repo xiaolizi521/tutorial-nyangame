@@ -9,6 +9,7 @@
 #include "GameScene.h"
 #include "SimpleAudioEngine.h"
 #include "BlockSprite.h"
+#include "CCPlaySE.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -63,6 +64,12 @@ void GameScene::initForVariables() {
     // コマの１辺の長さを取得
     BlockSprite* pBlock = BlockSprite::createWithBlockType(kBlockRed);
     m_blockSize = pBlock->getContentSize().height;
+    
+    blockTypes.push_back(kBlockRed);
+    blockTypes.push_back(kBlockBlue);
+    blockTypes.push_back(kBlockYellow);
+    blockTypes.push_back(kBlockGreen);
+    blockTypes.push_back(kBlockGray);
 }
 
 // 位置取得
@@ -111,6 +118,8 @@ void GameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
         
         if (sameColorBlockTags.size() > 1) {
             removeBlock(sameColorBlockTags, blockType);
+            
+            movingBlockAnimation1(sameColorBlockTags);
         }
     }
 }
@@ -173,16 +182,116 @@ list<int> GameScene::getSameColorBlockTags(int baseTag, kBlock blockType) {
 }
 
 void GameScene::removeBlock(std::list<int> blockTags, kBlock blockType) {
+    bool first = true;
+    
+    
     list<int>::iterator it = blockTags.begin();
     while (it != blockTags.end()) {
         m_blockTags[blockType].remove(*it);
         
         CCNode* block = m_background->getChildByTag(*it);
         if (block) {
-            block->removeFromParentAndCleanup(true);
+            CCScaleTo* scale = CCScaleTo::create(REMOVING_TIME, 0);
+            
+            CCCallFuncN* func = CCCallFuncN::create(this, callfuncN_selector(GameScene::removingBlock));
+            
+            CCFiniteTimeAction* sequence = CCSequence::create(scale, func, NULL);
+            
+            CCFiniteTimeAction* action;
+            if (first) {
+                CCPlaySE* playSe = CCPlaySE::create(MP3_REMOVE_BLOCK);
+                
+                action = CCSpawn::create(sequence, playSe, NULL);
+                
+                first = false;
+            } else {
+                action = sequence;
+            }
+            
+            block->runAction(action);
+            
         }
         it++;
     }
     
     SimpleAudioEngine::sharedEngine()->playEffect(MP3_REMOVE_BLOCK);
+}
+
+void GameScene::removingBlock(cocos2d::CCNode *block) {
+    block->removeFromParentAndCleanup(true);
+}
+
+GameScene::PositionIndex GameScene::getPositionIndex(int tag) {
+    int pos1_x = (tag - kTagBaseBlock) / 100;
+    int pos1_y = (tag - kTagBaseBlock) % 100;
+    
+    return PositionIndex(pos1_x, pos1_y);
+}
+
+void GameScene::setNewPosition1(int tag, GameScene::PositionIndex posIndex) {
+    BlockSprite* blockSprite = (BlockSprite*)m_background->getChildByTag(tag);
+    int nextPosY = blockSprite->getNextPosY();
+    if (nextPosY == -1) {
+        nextPosY = posIndex.y;
+    }
+    
+    blockSprite->setNextPos(posIndex.x, --nextPosY);
+}
+
+void GameScene::searchNewPosition1(std::list<int> blocks) {
+    list<int>::iterator it1 = blocks.begin();
+    while (it1 != blocks.end()) {
+        PositionIndex posIndex1 = getPositionIndex(*it1);
+        
+        vector<kBlock>::iterator it2 = blockTypes.begin();
+        while (it2 != blockTypes.end()) {
+            list<int>::iterator it3 = m_blockTags[*it2].begin();
+            while (it3 != m_blockTags[*it2].end()) {
+                PositionIndex posIndex2 = getPositionIndex(*it3);
+                
+                if (posIndex1.x == posIndex2.x &&
+                    posIndex1.y < posIndex2.y) {
+                    setNewPosition1(*it3, posIndex2);
+                }
+                
+                it3++;
+            }
+            
+            it2++;
+        }
+        
+        it1++;
+    }
+}
+
+void GameScene::moveBlock() {
+    vector<kBlock>::iterator it1 = blockTypes.begin();
+    while (it1 != blockTypes.end()) {
+        list<int>::iterator it2 = m_blockTags[*it1].begin();
+        while(it2 != m_blockTags[*it1].end()) {
+            BlockSprite* blockSprite = (BlockSprite*)m_background->getChildByTag(*it2);
+            int nextPosX = blockSprite->getNextPosX();
+            int nextPosY = blockSprite->getNextPosY();
+            
+            if (nextPosX != -1 || nextPosY != -1) {
+                int newTag = getTag(nextPosX, nextPosY);
+                blockSprite->initNextPos();
+                blockSprite->setTag(newTag);
+                
+                *it2 = newTag;
+                
+                CCMoveTo* move = CCMoveTo::create(MOVING_TIME, getPosition(nextPosX, nextPosY));
+                blockSprite->runAction(move);
+            }
+            
+            it2++;
+        }
+        
+        it1++;
+    }
+}
+
+void GameScene::movingBlockAnimation1(std::list<int> blocks) {
+    searchNewPosition1(blocks);
+    moveBlock();
 }

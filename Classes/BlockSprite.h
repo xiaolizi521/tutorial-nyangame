@@ -18,6 +18,11 @@ protected:
     
 public:
     CC_SYNTHESIZE_READONLY(kBlock, m_blockType, BlockType);
+    CC_SYNTHESIZE_READONLY(int, m_nextPosX, NextPosX);
+    CC_SYNTHESIZE_READONLY(int, m_nextPosY, NextPosY);
+    
+    void initNextPos();
+    void setNextPos(int nextPosX, int nextPosY);
     
     BlockSprite();
     virtual ~BlockSprite();
