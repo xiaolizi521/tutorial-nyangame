@@ -214,6 +214,7 @@
 		A54B16151783E3B0003AC06F /* BlockSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54B16131783E3B0003AC06F /* BlockSprite.cpp */; };
 		A56CDC511783328200BB1B81 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56CDC4F1783328200BB1B81 /* GameScene.cpp */; };
 		A56CDC551783390000BB1B81 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A56CDC541783390000BB1B81 /* background.png */; };
+		A591653D1785B41F00E65FAA /* removeBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A591653C1785B41F00E65FAA /* removeBlock.mp3 */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -663,6 +664,7 @@
 		A56CDC4F1783328200BB1B81 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
 		A56CDC501783328200BB1B81 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		A56CDC541783390000BB1B81 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		A591653C1785B41F00E65FAA /* removeBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = removeBlock.mp3; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1503,6 +1505,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A591653C1785B41F00E65FAA /* removeBlock.mp3 */,
 				A54B16061783E34E003AC06F /* blue.png */,
 				A54B16071783E34E003AC06F /* gray.png */,
 				A54B16081783E34E003AC06F /* green.png */,
@@ -1614,6 +1617,7 @@
 				A54B160D1783E34E003AC06F /* green.png in Resources */,
 				A54B160E1783E34E003AC06F /* red.png in Resources */,
 				A54B160F1783E34E003AC06F /* yellow.png in Resources */,
+				A591653D1785B41F00E65FAA /* removeBlock.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

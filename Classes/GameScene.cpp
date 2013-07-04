@@ -38,6 +38,9 @@ bool GameScene::init() {
     
     // コマ表示
     showBlock();
+    
+    // preload background mp3 file
+    SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MP3_REMOVE_BLOCK);
 
     return true;
 }
@@ -178,7 +181,8 @@ void GameScene::removeBlock(std::list<int> blockTags, kBlock blockType) {
         if (block) {
             block->removeFromParentAndCleanup(true);
         }
-        
         it++;
     }
+    
+    SimpleAudioEngine::sharedEngine()->playEffect(MP3_REMOVE_BLOCK);
 }

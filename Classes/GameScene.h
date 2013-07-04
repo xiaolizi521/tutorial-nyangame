@@ -16,6 +16,7 @@
 #define MAX_BLOCK_Y 8
 
 #define PNG_BACKGROUND "background.png"
+#define MP3_REMOVE_BLOCK "removeBlock.mp3"
 
 class GameScene : public cocos2d::CCLayer {
 protected:
