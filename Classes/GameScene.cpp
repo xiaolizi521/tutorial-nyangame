@@ -43,6 +43,8 @@ bool GameScene::init() {
     showLabel();
     showHighScoreLabel();
     
+    showResetButton();
+    
     // preload background mp3 file
     SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MP3_REMOVE_BLOCK);
 
@@ -487,4 +489,21 @@ void GameScene::saveHighScore() {
         
         showHighScoreLabel();
     }
+}
+
+void GameScene::menuResetCallback(cocos2d::CCObject *pSender) {
+    GameScene* scene = GameScene::create();
+    CCDirector::sharedDirector()->replaceScene((CCScene*)scene);
+}
+
+void GameScene::showResetButton() {
+    CCSize bgSize = m_background->getContentSize();
+    
+    CCMenuItemImage* resetButton = CCMenuItemImage::create(PNG_RESET, PNG_RESET,
+                                                           this, menu_selector(GameScene::menuResetCallback));
+    resetButton->setPosition(ccp(bgSize.width * 0.78, bgSize.height * 0.1));
+    
+    CCMenu* menu = CCMenu::create(resetButton, NULL);
+    menu->setPosition(CCPointZero);
+    m_background->addChild(menu);
 }

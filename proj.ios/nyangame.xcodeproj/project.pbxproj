@@ -215,6 +215,7 @@
 		A56CDC511783328200BB1B81 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56CDC4F1783328200BB1B81 /* GameScene.cpp */; };
 		A56CDC551783390000BB1B81 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A56CDC541783390000BB1B81 /* background.png */; };
 		A58B1F041789AD1B0020DE5E /* gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = A58B1F031789AD1B0020DE5E /* gameover.png */; };
+		A58B1F061789B5C00020DE5E /* reset.png in Resources */ = {isa = PBXBuildFile; fileRef = A58B1F051789B5C00020DE5E /* reset.png */; };
 		A591653D1785B41F00E65FAA /* removeBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A591653C1785B41F00E65FAA /* removeBlock.mp3 */; };
 		A59165401785B4E800E65FAA /* CCPlaySE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A591653E1785B4E800E65FAA /* CCPlaySE.cpp */; };
 		A59FC78117899CED00748404 /* blueFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77517899CED00748404 /* blueFont.fnt */; };
@@ -679,6 +680,7 @@
 		A56CDC501783328200BB1B81 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
 		A56CDC541783390000BB1B81 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		A58B1F031789AD1B0020DE5E /* gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover.png; sourceTree = "<group>"; };
+		A58B1F051789B5C00020DE5E /* reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reset.png; sourceTree = "<group>"; };
 		A591653C1785B41F00E65FAA /* removeBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = removeBlock.mp3; sourceTree = "<group>"; };
 		A591653E1785B4E800E65FAA /* CCPlaySE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCPlaySE.cpp; path = ../Classes/CCPlaySE.cpp; sourceTree = "<group>"; };
 		A591653F1785B4E800E65FAA /* CCPlaySE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCPlaySE.h; path = ../Classes/CCPlaySE.h; sourceTree = "<group>"; };
@@ -1536,6 +1538,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A58B1F051789B5C00020DE5E /* reset.png */,
 				A58B1F031789AD1B0020DE5E /* gameover.png */,
 				A59FC77517899CED00748404 /* blueFont.fnt */,
 				A59FC77617899CED00748404 /* blueFont.png */,
@@ -1675,6 +1678,7 @@
 				A59FC78B17899CED00748404 /* yellowFont.fnt in Resources */,
 				A59FC78C17899CED00748404 /* yellowFont.png in Resources */,
 				A58B1F041789AD1B0020DE5E /* gameover.png in Resources */,
+				A58B1F061789B5C00020DE5E /* reset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
