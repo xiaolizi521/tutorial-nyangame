@@ -41,6 +41,7 @@ bool GameScene::init() {
     showBlock();
     
     showLabel();
+    showHighScoreLabel();
     
     // preload background mp3 file
     SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MP3_REMOVE_BLOCK);
@@ -315,6 +316,8 @@ void GameScene::movedBlocks() {
     m_animating = false;
     
     if (!existsSameBlock()) {
+        saveHighScore();
+        
         CCSize bgSize = m_background->getContentSize();
         
         CCSprite* gameOver = CCSprite::create(PNG_GAMEOVER);
@@ -456,4 +459,32 @@ bool GameScene::existsSameBlock() {
     }
     
     return false;
+}
+
+void GameScene::showHighScoreLabel() {
+    CCSize bgSize = m_background->getContentSize();
+    
+    int highScore = CCUserDefault::sharedUserDefault()->getIntegerForKey(KEY_HIGHSCORE, 0);
+    const char* highScoreStr = ccsf("%d", highScore);
+    CCLabelBMFont* highScoreLabel = (CCLabelBMFont*)m_background->getChildByTag(kTagHighScoreLabel);
+    if (!highScoreLabel) {
+        highScoreLabel = CCLabelBMFont::create(highScoreStr, FONT_WHITE);
+        highScoreLabel->setPosition(ccp(bgSize.width * 0.78, bgSize.height * 0.87));
+        m_background->addChild(highScoreLabel, kZOrderLabel, kTagHighScoreLabel);
+    }
+    else {
+        highScoreLabel->setString(highScoreStr);
+    }
+}
+
+void GameScene::saveHighScore() {
+    CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
+    
+    int oldHighScore = userDefault->getIntegerForKey(KEY_HIGHSCORE, 0);
+    if (oldHighScore < m_score) {
+        userDefault->setIntegerForKey(KEY_HIGHSCORE, m_score);
+        userDefault->flush();
+        
+        showHighScoreLabel();
+    }
 }

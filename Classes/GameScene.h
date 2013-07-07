@@ -17,6 +17,8 @@
 #define REMOVING_TIME 0.1f
 #define MOVING_TIME 0.2f
 
+#define KEY_HIGHSCORE "HighScore"
+
 #define PNG_BACKGROUND "background.png"
 #define PNG_GAMEOVER "gameover.png"
 #define MP3_REMOVE_BLOCK "removeBlock.mp3"
@@ -39,6 +41,7 @@ protected:
         kTagGrayLabel,
         kTagScoreLabel,
         kTagGameOver,
+        kTagHighScoreLabel,
 
         kTagBaseBlock = 10000,
     };
@@ -96,6 +99,9 @@ protected:
     int m_score;
     
     bool existsSameBlock();
+    
+    void saveHighScore();
+    void showHighScoreLabel();
     
 public:
     virtual bool init();
