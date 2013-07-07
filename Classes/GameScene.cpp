@@ -313,6 +313,16 @@ void GameScene::movedBlocks() {
     showLabel();
     
     m_animating = false;
+    
+    if (!existsSameBlock()) {
+        CCSize bgSize = m_background->getContentSize();
+        
+        CCSprite* gameOver = CCSprite::create(PNG_GAMEOVER);
+        gameOver->setPosition(ccp(bgSize.width / 2, bgSize.height * 0.8));
+        m_background->addChild(gameOver, kZOrderGameOver, kTagGameOver);
+        
+        setTouchEnabled(false);
+    }
 }
 
 void GameScene::setNewPosition2(int tag, GameScene::PositionIndex posIndex) {
@@ -428,4 +438,22 @@ void GameScene::showLabel() {
     else {
         scoreLabel->setString(scoreStr);
     }
+}
+
+bool GameScene::existsSameBlock() {
+    vector<kBlock>::iterator it1 = blockTypes.begin();
+    while (it1 != blockTypes.end()) {
+        list<int>::iterator it2 = m_blockTags[*it1].begin();
+        while (it2 != m_blockTags[*it1].end()) {
+            if (getSameColorBlockTags(*it2, *it1).size() > 1) {
+                return true;
+            }
+            
+            it2++;
+        }
+        
+        it1++;
+    }
+    
+    return false;
 }
