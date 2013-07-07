@@ -20,15 +20,28 @@
 #define PNG_BACKGROUND "background.png"
 #define MP3_REMOVE_BLOCK "removeBlock.mp3"
 
+#define FONT_RED "redFont.fnt"
+#define FONT_BLUE "blueFont.fnt"
+#define FONT_YELLOW "yellowFont.fnt"
+#define FONT_GREEN "greenFont.fnt"
+#define FONT_GRAY "grayFont.fnt"
+
 class GameScene : public cocos2d::CCLayer {
 protected:
     enum kTag {
         kTagBackground = 1, // 画像のタグ
+        kTagRedLabel,
+        kTagBlueLabel,
+        kTagYellowLabel,
+        kTagGreenLabel,
+        kTagGrayLabel,
+
         kTagBaseBlock = 10000,
     };
     
     enum kZOrder {
         kZOrderBackground, // z-order
+        kZOrderLabel, // ラベル同士が表示上重なることがないため，1種類のみ用意
         kZOrderBlock,
     };
     
