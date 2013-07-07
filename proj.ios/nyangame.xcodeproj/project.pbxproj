@@ -216,6 +216,18 @@
 		A56CDC551783390000BB1B81 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A56CDC541783390000BB1B81 /* background.png */; };
 		A591653D1785B41F00E65FAA /* removeBlock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A591653C1785B41F00E65FAA /* removeBlock.mp3 */; };
 		A59165401785B4E800E65FAA /* CCPlaySE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A591653E1785B4E800E65FAA /* CCPlaySE.cpp */; };
+		A59FC78117899CED00748404 /* blueFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77517899CED00748404 /* blueFont.fnt */; };
+		A59FC78217899CED00748404 /* blueFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77617899CED00748404 /* blueFont.png */; };
+		A59FC78317899CED00748404 /* grayFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77717899CED00748404 /* grayFont.fnt */; };
+		A59FC78417899CED00748404 /* grayFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77817899CED00748404 /* grayFont.png */; };
+		A59FC78517899CED00748404 /* greenFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77917899CED00748404 /* greenFont.fnt */; };
+		A59FC78617899CED00748404 /* greenFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77A17899CED00748404 /* greenFont.png */; };
+		A59FC78717899CED00748404 /* redFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77B17899CED00748404 /* redFont.fnt */; };
+		A59FC78817899CED00748404 /* redFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77C17899CED00748404 /* redFont.png */; };
+		A59FC78917899CED00748404 /* whiteFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77D17899CED00748404 /* whiteFont.fnt */; };
+		A59FC78A17899CED00748404 /* whiteFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77E17899CED00748404 /* whiteFont.png */; };
+		A59FC78B17899CED00748404 /* yellowFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A59FC77F17899CED00748404 /* yellowFont.fnt */; };
+		A59FC78C17899CED00748404 /* yellowFont.png in Resources */ = {isa = PBXBuildFile; fileRef = A59FC78017899CED00748404 /* yellowFont.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -668,6 +680,18 @@
 		A591653C1785B41F00E65FAA /* removeBlock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = removeBlock.mp3; sourceTree = "<group>"; };
 		A591653E1785B4E800E65FAA /* CCPlaySE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCPlaySE.cpp; path = ../Classes/CCPlaySE.cpp; sourceTree = "<group>"; };
 		A591653F1785B4E800E65FAA /* CCPlaySE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCPlaySE.h; path = ../Classes/CCPlaySE.h; sourceTree = "<group>"; };
+		A59FC77517899CED00748404 /* blueFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blueFont.fnt; sourceTree = "<group>"; };
+		A59FC77617899CED00748404 /* blueFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueFont.png; sourceTree = "<group>"; };
+		A59FC77717899CED00748404 /* grayFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = grayFont.fnt; sourceTree = "<group>"; };
+		A59FC77817899CED00748404 /* grayFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayFont.png; sourceTree = "<group>"; };
+		A59FC77917899CED00748404 /* greenFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = greenFont.fnt; sourceTree = "<group>"; };
+		A59FC77A17899CED00748404 /* greenFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenFont.png; sourceTree = "<group>"; };
+		A59FC77B17899CED00748404 /* redFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = redFont.fnt; sourceTree = "<group>"; };
+		A59FC77C17899CED00748404 /* redFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redFont.png; sourceTree = "<group>"; };
+		A59FC77D17899CED00748404 /* whiteFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whiteFont.fnt; sourceTree = "<group>"; };
+		A59FC77E17899CED00748404 /* whiteFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteFont.png; sourceTree = "<group>"; };
+		A59FC77F17899CED00748404 /* yellowFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = yellowFont.fnt; sourceTree = "<group>"; };
+		A59FC78017899CED00748404 /* yellowFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowFont.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1510,6 +1534,18 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A59FC77517899CED00748404 /* blueFont.fnt */,
+				A59FC77617899CED00748404 /* blueFont.png */,
+				A59FC77717899CED00748404 /* grayFont.fnt */,
+				A59FC77817899CED00748404 /* grayFont.png */,
+				A59FC77917899CED00748404 /* greenFont.fnt */,
+				A59FC77A17899CED00748404 /* greenFont.png */,
+				A59FC77B17899CED00748404 /* redFont.fnt */,
+				A59FC77C17899CED00748404 /* redFont.png */,
+				A59FC77D17899CED00748404 /* whiteFont.fnt */,
+				A59FC77E17899CED00748404 /* whiteFont.png */,
+				A59FC77F17899CED00748404 /* yellowFont.fnt */,
+				A59FC78017899CED00748404 /* yellowFont.png */,
 				A591653C1785B41F00E65FAA /* removeBlock.mp3 */,
 				A54B16061783E34E003AC06F /* blue.png */,
 				A54B16071783E34E003AC06F /* gray.png */,
@@ -1623,6 +1659,18 @@
 				A54B160E1783E34E003AC06F /* red.png in Resources */,
 				A54B160F1783E34E003AC06F /* yellow.png in Resources */,
 				A591653D1785B41F00E65FAA /* removeBlock.mp3 in Resources */,
+				A59FC78117899CED00748404 /* blueFont.fnt in Resources */,
+				A59FC78217899CED00748404 /* blueFont.png in Resources */,
+				A59FC78317899CED00748404 /* grayFont.fnt in Resources */,
+				A59FC78417899CED00748404 /* grayFont.png in Resources */,
+				A59FC78517899CED00748404 /* greenFont.fnt in Resources */,
+				A59FC78617899CED00748404 /* greenFont.png in Resources */,
+				A59FC78717899CED00748404 /* redFont.fnt in Resources */,
+				A59FC78817899CED00748404 /* redFont.png in Resources */,
+				A59FC78917899CED00748404 /* whiteFont.fnt in Resources */,
+				A59FC78A17899CED00748404 /* whiteFont.png in Resources */,
+				A59FC78B17899CED00748404 /* yellowFont.fnt in Resources */,
+				A59FC78C17899CED00748404 /* yellowFont.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
