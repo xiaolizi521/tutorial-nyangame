@@ -86,6 +86,8 @@ protected:
     void setNewPosition2(int tag, PositionIndex posIndex);
     void movingBlocksAnimation2();
     
+    void showLabel();
+    
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

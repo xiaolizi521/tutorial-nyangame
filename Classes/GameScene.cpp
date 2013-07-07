@@ -40,6 +40,8 @@ bool GameScene::init() {
     // コマ表示
     showBlock();
     
+    showLabel();
+    
     // preload background mp3 file
     SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic(MP3_REMOVE_BLOCK);
 
@@ -303,6 +305,8 @@ void GameScene::movingBlockAnimation1(std::list<int> blocks) {
 
 // コマの移動完了
 void GameScene::movedBlocks() {
+    showLabel();
+    
     m_animating = false;
 }
 
@@ -381,4 +385,31 @@ void GameScene::movingBlocksAnimation2() {
     moveBlock();
     
     scheduleOnce(schedule_selector(GameScene::movedBlocks), MOVING_TIME);
+}
+
+void GameScene::showLabel() {
+    CCSize bgSize = m_background->getContentSize();
+    
+    int tagsForLabel[] = {kTagRedLabel, kTagBlueLabel, kTagYellowLabel,
+        kTagGreenLabel, kTagGrayLabel};
+    const char* fontNames[] = {FONT_RED, FONT_BLUE, FONT_YELLOW, FONT_GREEN, FONT_GRAY};
+    float heightRate[] = {0.61, 0.51, 0.41, 0.31, 0.21};
+    
+    vector<kBlock>::iterator it = blockTypes.begin();
+    while (it != blockTypes.end()) {
+        int count = m_blockTags[*it].size();
+        const char* countStr = ccsf("%02d", count);
+        CCLabelBMFont* label = (CCLabelBMFont*)m_background->getChildByTag(tagsForLabel[*it]);
+        if (!label) {
+            label = CCLabelBMFont::create(countStr, fontNames[*it]);
+            label->setPosition(ccp(bgSize.width * 0.78, bgSize.height * heightRate[*it]));
+            m_background->addChild(label, kZOrderLabel, tagsForLabel[*it]);
+            
+        }
+        else {
+            label->setString(countStr);
+        }
+        
+        it++;
+    }
 }
