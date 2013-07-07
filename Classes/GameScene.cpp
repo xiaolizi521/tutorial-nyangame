@@ -102,7 +102,7 @@ void GameScene::showBlock() {
 
 // タップ開始イベント
 bool GameScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
-    return true;
+    return !m_animating;
 }
 
 void GameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
@@ -117,6 +117,8 @@ void GameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
         list<int> sameColorBlockTags = getSameColorBlockTags(tag, blockType);
         
         if (sameColorBlockTags.size() > 1) {
+            m_animating = true;
+            
             removeBlock(sameColorBlockTags, blockType);
             
             movingBlockAnimation1(sameColorBlockTags);
@@ -293,5 +295,90 @@ void GameScene::moveBlock() {
 
 void GameScene::movingBlockAnimation1(std::list<int> blocks) {
     searchNewPosition1(blocks);
+    
     moveBlock();
+    
+    scheduleOnce(schedule_selector(GameScene::movingBlocksAnimation2), MOVING_TIME);
+}
+
+// コマの移動完了
+void GameScene::movedBlocks() {
+    m_animating = false;
+}
+
+void GameScene::setNewPosition2(int tag, GameScene::PositionIndex posIndex) {
+    BlockSprite *blockSprite = (BlockSprite *)m_background->getChildByTag(tag);
+    int nextPosX = blockSprite->getNextPosX();
+    if (nextPosX == -1) {
+        nextPosX = posIndex.x;
+    }
+    
+    blockSprite->setNextPos(--nextPosX, posIndex.y);
+}
+
+// 存在する列を取得する
+map<int, bool> GameScene::getExistsBlockColumn() {
+    map<int, bool> xBlock;
+    for(int i=0;i<MAX_BLOCK_X;i++) {
+        xBlock[i] = false;
+    }
+    
+    // コマ種類のループ
+    vector<kBlock>::iterator it1  = blockTypes.begin();
+    while (it1 != blockTypes.end()) {
+        list<int>::iterator it2 = m_blockTags[*it1].begin();
+        while (it2 != m_blockTags[*it1].end()) {
+            // 存在するコマのx位置を記録
+            xBlock[getPositionIndex(*it2).x] = true;
+            
+            it2++;
+        }
+        
+        it1++;
+    }
+    
+    return xBlock;
+}
+
+// 消えたコマ列を埋めるように新しい位置をセット
+void GameScene::searchNewPosition2() {
+    map<int, bool> xBlock = getExistsBlockColumn();
+    
+    bool first = true;
+    for(int i = MAX_BLOCK_X - 1; i>=0; i--) {
+        if (xBlock[i]) {
+            first = false;
+            continue;
+        }
+        else {
+            if (first) {
+                continue;
+            }
+            else {
+                vector<kBlock>::iterator it1 = blockTypes.begin();
+                while (it1 != blockTypes.end()) {
+                    list<int>::iterator it2 = m_blockTags[*it1].begin();
+                    while (it2 != m_blockTags[*it1].end()) {
+                        PositionIndex posIndex = getPositionIndex(*it2);
+                        
+                        if (i < posIndex.x) {
+                            setNewPosition2(*it2, posIndex);
+                        }
+                        
+                        it2++;
+                    }
+                    
+                    it1++;
+                }
+            }
+        }
+    }
+}
+
+void GameScene::movingBlocksAnimation2() {
+    searchNewPosition2();
+    
+    moveBlock();
+    
+    scheduleOnce(schedule_selector(GameScene::movedBlocks), MOVING_TIME);
 }

@@ -66,6 +66,13 @@ protected:
     void moveBlock();
     void movingBlockAnimation1(std::list<int> blocks);
     
+    bool m_animating;
+    void movedBlocks();
+    std::map<int, bool> getExistsBlockColumn();
+    void searchNewPosition2();
+    void setNewPosition2(int tag, PositionIndex posIndex);
+    void movingBlocksAnimation2();
+    
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();
