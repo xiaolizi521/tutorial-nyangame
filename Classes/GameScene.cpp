@@ -72,6 +72,9 @@ void GameScene::initForVariables() {
     blockTypes.push_back(kBlockYellow);
     blockTypes.push_back(kBlockGreen);
     blockTypes.push_back(kBlockGray);
+    
+    m_animating=false;
+    m_score = 0;
 }
 
 // 位置取得
@@ -119,6 +122,8 @@ void GameScene::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
         list<int> sameColorBlockTags = getSameColorBlockTags(tag, blockType);
         
         if (sameColorBlockTags.size() > 1) {
+            m_score += pow(sameColorBlockTags.size() - 2, 2);
+            
             m_animating = true;
             
             removeBlock(sameColorBlockTags, blockType);
@@ -411,5 +416,16 @@ void GameScene::showLabel() {
         }
         
         it++;
+    }
+    
+    const char* scoreStr = ccsf("%d", m_score);
+    CCLabelBMFont* scoreLabel = (CCLabelBMFont*)m_background->getChildByTag(kTagScoreLabel);
+    if (!scoreLabel) {
+        scoreLabel = CCLabelBMFont::create(scoreStr, FONT_WHITE);
+        scoreLabel->setPosition(ccp(bgSize.width * 0.78, bgSize.height * 0.75));
+        m_background->addChild(scoreLabel, kZOrderLabel, kTagScoreLabel);
+    }
+    else {
+        scoreLabel->setString(scoreStr);
     }
 }
